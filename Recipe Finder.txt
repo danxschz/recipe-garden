@@ -1,0 +1,22 @@
+Recipe Finder Project
+
+Finds recipes based on ingredients prompted by users.
+
+Data set: Recipes scraped from cooking sites
+
+Reference sites:
+https://milisti.herokuapp.com/home/
+https://www.budgetbytes.com/
+
+Features: 
+- Find recipes based on a collection of ingredients
+- See all recipes
+- Post your own recipes
+- Favorite recipes
+- See all ingredients
+- Comments
+- If it needs login, remember to provide one for recruiters
+
+Steps (To do list):
+Model
+ListView
