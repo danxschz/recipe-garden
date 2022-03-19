@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Recipe Garden{% endblock %}</title>
+  <meta name="description" 
+    content="Choose your preferred ingredients and then view recipes that best match them">
+  <meta name="author" content="Daniel Sanchez">
+
+  <meta property="og:title" content="{% block ogtitle %}Recipe Garden{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{% block ogurl %}{% url 'home:main' %}{% endblock %}">
+  <meta property="og:description" 
+    content="{% block ogdesc %}Choose your preferred ingredients and then view recipes that 
+    best match them{% endblock %}">
+  <meta property="og:image" 
+    content="{% block ogimage %}{% static 'ogimage.png' %}{% endblock %}">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+  <link rel="manifest" href="{% static 'site.webmanifest' %}">
+  <link rel="mask-icon" href="{% static 'safari-pinned-tab.svg' %}" color="#606c38">
+  <meta name="msapplication-TileColor" content="##606c38">
+  <meta name="theme-color" content="#fefae0">
+
+  <!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+</head>
+
+<body>
+  {% block content %}{% endblock %}
+</body>
+
+</html>
