@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Ingredients{% endblock %}
+
+{% block content %}
+
+<h1>Ingredients</h1>
+<hr>
+
+{% if ingredient_list %}
+  {% for ingredient in ingredient_list %}
+    <p><a href="{% url 'recipes:recipes_by_ingredient' ingredient.id %}">{{ ingredient.name }}</a></p>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}

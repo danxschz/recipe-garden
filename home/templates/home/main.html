@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Test</h1>
+
+<h1>Recipe Garden</h1>
+<p><a href="{% url 'recipes:recipe_list' %}">Recipes</a></p>
+<p><a href="{% url 'recipes:ingredient_list' %}">Ingredients</a></p>
+
 {% endblock %}
+<!--
+Ingredients
+Popular / Categories
+Search
+Saves/Favorites
+Sign in
+
+About
+Contact info
+Back to top
+Copyright
+-->

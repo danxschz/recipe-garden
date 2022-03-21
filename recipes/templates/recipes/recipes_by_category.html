@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}recipes{% endblock %}
+
+{% block content %}
+
+<!-- Add search bar and search by ingredient link -->
+<h1>Recipes</h1>
+<a href="{% url 'recipes:ingredient_list' %}">Search by ingredient</a>
+<hr>
+
+{% if recipe_list %}
+  {% for recipe in recipe_list %}
+    <!-- Picture and option to add to favorite -->
+    <p><a href="{% url 'recipes:recipe_detail' recipe.id %}">{{ recipe.name }}</a></p>
+    <p>{{ recipe.prep_time }} m</p>
+    <p>{{ recipe.description|truncatechars:60 }}</p>
+    <p>By {{ recipe.author.name }}</p>
+    <hr>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}
