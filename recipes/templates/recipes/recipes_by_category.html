@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}recipes{% endblock %}
+{% block title %}{{ category.name }} recipes{% endblock %}
 
 {% block content %}
 
 <!-- Add search bar and search by ingredient link -->
-<h1>Recipes</h1>
+<h1>{{ category.name }} recipes</h1>
 <a href="{% url 'recipes:ingredient_list' %}">Search by ingredient</a>
 <hr>
 

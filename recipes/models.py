@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
+from django.template.defaultfilters import slugify
 
 class Source(models.Model):
     web = models.CharField(
@@ -25,6 +26,12 @@ class Ingredient(models.Model):
             max_length=128,
             validators=[MinLengthValidator(3, "Ingredient name must be greater than 2 characters")]
     )
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs): # Autosave slug field
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -34,6 +41,12 @@ class Category(models.Model):
             max_length=200,
             validators=[MinLengthValidator(3, "Category name must be greater than 2 characters")],
     )
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs): # Autosave slug field
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Categories" # Change name in admin interface

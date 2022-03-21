@@ -9,7 +9,7 @@
 
 {% if ingredient_list %}
   {% for ingredient in ingredient_list %}
-    <p><a href="{% url 'recipes:recipes_by_ingredient' ingredient.id %}">{{ ingredient.name }}</a></p>
+    <p><a href="{% url 'recipes:recipes_by_ingredient' ingredient.slug %}">{{ ingredient.name }}</a></p>
   {% endfor %}
 {% endif %}
 

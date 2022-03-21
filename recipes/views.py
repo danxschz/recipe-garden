@@ -42,8 +42,8 @@ class IngredientList(ListView):
 class RecipesByIngredient(View):
     template_name = 'recipes/recipes_by_ingredient.html'
 
-    def get(self, request, pk):
-        ingredient = Ingredient.objects.get(pk=pk)
+    def get(self, request, slug):
+        ingredient = Ingredient.objects.get(slug=slug)
         queryset = RecipeIngredient.objects.filter(ingredient=ingredient)
         context = {'recipe_list': queryset, 'ingredient': ingredient}
         return render(request, self.template_name, context)
@@ -51,10 +51,10 @@ class RecipesByIngredient(View):
 class RecipesByCategory(View):
     template_name = 'recipes/recipes_by_category.html'
 
-    def get(self, request, pk):
-        c = Category.objects.get(pk=pk)
-        queryset = Recipe.objects.filter(category=c)
-        context = {'recipe_list': queryset}
+    def get(self, request, slug):
+        category = Category.objects.get(slug=slug)
+        queryset = Recipe.objects.filter(category=category)
+        context = {'recipe_list': queryset, 'category': category}
         return render(request, self.template_name, context)
 
 
