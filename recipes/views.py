@@ -48,6 +48,12 @@ class RecipesByIngredient(View):
         context = {'recipe_list': queryset, 'ingredient': ingredient}
         return render(request, self.template_name, context)
 
+class CategoryList(ListView):
+    model = Category
+    template_name = 'recipes/category_list.html'
+    queryset = Category.objects.order_by('name')
+    context_object_name = 'category_list'
+
 class RecipesByCategory(View):
     template_name = 'recipes/recipes_by_category.html'
 

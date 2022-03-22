@@ -1,4 +1,4 @@
-Recipe Finder Project
+Recipe Finder Project 'Recipe Garden'
 
 Finds recipes based on ingredients prompted by users.
 
@@ -17,6 +17,3 @@ Features:
 - Comments
 - If it needs login, remember to provide one for recruiters
 
-Steps (To do list):
-Model
-ListView

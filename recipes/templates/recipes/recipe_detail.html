@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ recipe.name }}{% endblock %}
 
@@ -10,6 +11,11 @@
   <h1>{{ recipe.name }}</h1>
   <p>{{ recipe.description }}</p>
   <p>By {{ recipe.author.name }}</p>
+  {% if recipe.picture %}
+    <img src="{{ recipe.picture.url }}" alt="Recipe picture" style="width: 20%">
+  {% else %}
+    <img src="{% static 'icon.png' %}" alt="Picture not available" style="width: 20%">
+  {% endif %}
   <p>Ready in: {{ recipe.prep_time }}mins</p>
   <p>Servings: {{ recipe.servings }}</p>
   <hr>
@@ -39,6 +45,11 @@
   <p><strong>Popular in {{ recipe.category }}</strong></p>
   {% for recipe in similar_recipes %}
     <p>{{ recipe.name }}</p>
+    {% if recipe.picture %}
+      <img src="{{ recipe.picture.url }}" alt="Recipe picture" style="width: 5%">
+    {% else %}
+      <img src="{% static 'icon.png' %}" alt="Picture not available" style="width: 5%">
+    {% endif %}
   {% endfor %}
 
   <!-- Social share buttons -->

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+
+<h1>Categories</h1>
+<hr>
+
+{% if category_list %}
+  {% for category in category_list %}
+    <p><a href="{% url 'recipes:recipes_by_category' category.slug %}">{{ category.name }}</a></p>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}

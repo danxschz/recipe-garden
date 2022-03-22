@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Recipes that include {{ ingredient.name }}{% endblock %}
 
@@ -14,6 +15,11 @@
     <p>{{ row.recipe.prep_time }} m</p>
     <p>{{ row.recipe.description|truncatechars:60 }}</p>
     <p>By {{ row.recipe.author.name }}</p>
+    {% if row.recipe.picture %}
+      <img src="{{ row.recipe.picture.url }}" alt="Recipe picture" style="width: 5%">
+    {% else %}
+      <img src="{% static 'icon.png' %}" alt="Picture not available" style="width: 5%">
+    {% endif %}
     <hr>
   {% endfor %}
 {% endif %}

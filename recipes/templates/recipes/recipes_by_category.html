@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ category.name }} recipes{% endblock %}
 
@@ -16,6 +17,11 @@
     <p>{{ recipe.prep_time }} m</p>
     <p>{{ recipe.description|truncatechars:60 }}</p>
     <p>By {{ recipe.author.name }}</p>
+    {% if recipe.picture %}
+      <img src="{{ recipe.picture.url }}" alt="Recipe picture" style="width: 5%">
+    {% else %}
+      <img src="{% static 'icon.png' %}" alt="Picture not available" style="width: 5%">
+    {% endif %}
     <hr>
   {% endfor %}
 {% endif %}

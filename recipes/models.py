@@ -72,6 +72,7 @@ class Recipe(models.Model):
     ingredients = models.ManyToManyField(Ingredient, through='RecipeIngredient', related_name='recipe_ingredients')
     directions = models.TextField()
     nutrition_facts = models.TextField(blank=True)
+    picture = models.ImageField(null=True, blank=True, upload_to='recipes/')
     author = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
