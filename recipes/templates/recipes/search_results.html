@@ -34,7 +34,7 @@
 
 {% if recipe_list %}
   {% for recipe in recipe_list %}
-    <p><a href="{% url 'recipes:recipe_detail' recipe.id %}">{{ recipe.name }}</a></p>
+    <p><a href="{% url 'recipes:recipe_detail' recipe.id recipe.slug %}">{{ recipe.name }}</a></p>
     <p>{{ recipe.prep_time }} m</p>
     <p>{{ recipe.description|truncatechars:60 }}</p>
     <p>By {{ recipe.author.name }}</p>

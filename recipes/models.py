@@ -74,13 +74,17 @@ class Recipe(models.Model):
     nutrition_facts = models.TextField(blank=True)
     picture = models.ImageField(null=True, blank=True, upload_to='recipes/')
     author = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL)
+    slug = models.SlugField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    #rating 
     #comments
-    #pictures
     #owner/made_by
     #saves/favorites
+
+    def save(self, *args, **kwargs): # Autosave slug field
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

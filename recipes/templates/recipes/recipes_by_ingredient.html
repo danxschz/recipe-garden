@@ -11,7 +11,7 @@
 {% if recipe_list %}
   {% for row in recipe_list %}
     <!-- Picture and option to add to favorite -->
-    <p><a href="{% url 'recipes:recipe_detail' row.recipe.id %}">{{ row.recipe.name }}</a></p>
+    <p><a href="{% url 'recipes:recipe_detail' row.recipe.id row.recipe.slug %}">{{ row.recipe.name }}</a></p>
     <p>{{ row.recipe.prep_time }} m</p>
     <p>{{ row.recipe.description|truncatechars:60 }}</p>
     <p>By {{ row.recipe.author.name }}</p>
