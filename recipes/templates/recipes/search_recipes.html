@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search recipes{% endblock %}
+
+{% block content %}
+
+<h1>Search recipes</h1>
+<hr>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="text" placeholder="Search.." name="search" required>
+  <button type="submit">Search</button>
+</form>
+<hr>
+
+{% if recipe_list %}
+  {% for recipe in recipe_list %}
+    <p><a href="{% url 'recipes:recipe_detail' recipe.id %}">{{ recipe.name }}</a></p>
+    <p>{{ recipe.prep_time }} m</p>
+    <p>{{ recipe.description|truncatechars:60 }}</p>
+    <p>By {{ recipe.author.name }}</p>
+    {% if recipe.picture %}
+      <img src="{{ recipe.picture.url }}" alt="Recipe picture" style="width: 5%">
+    {% else %}
+      <img src="{% static 'icon.png' %}" alt="Picture not available" style="width: 5%">
+    {% endif %}
+    <hr>
+  {% endfor %}
+{% else %}
+  <p>No results found.</p>
+{% endif %}
+
+{% endblock %}

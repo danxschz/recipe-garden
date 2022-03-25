@@ -10,4 +10,6 @@ urlpatterns = [
     path('recipes/ingredient/<slug:slug>/', views.RecipesByIngredient.as_view(), name='recipes_by_ingredient'),
     path('categories/', views.CategoryList.as_view(), name='category_list'),
     path('recipes/category/<slug:slug>/', views.RecipesByCategory.as_view(), name='recipes_by_category'),
+    path('recipes/search/', views.SearchRecipes.as_view(), name='search'),
+    path('recipes/search/<str:str>/', views.SearchResults.as_view(), name='searchresults'),
 ]
